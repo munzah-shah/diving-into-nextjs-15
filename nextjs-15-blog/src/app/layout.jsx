@@ -1,27 +1,23 @@
-import Link from "next/link";
 import "./globals.css";
+import { Montserrat } from "next/font/google";
+import Navigation from "../components/Navigation";
+import Footer from "../components/footer";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-montserrat",
+});
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${montserrat.variable} font-sans`}>
         <header>
-          <nav>
-            <Link href="/" className="nav-link">
-              Home
-            </Link>
-            <div>
-              <Link href="/register" className="nav-link">
-                Register
-              </Link>
-              <Link href="/dashboard" className="nav-link">
-                Dashboard
-              </Link>
-            </div>
-          </nav>
+          <Navigation />
         </header>
         <main>{children}</main>
-        <footer>Footer</footer>
+        <Footer />
       </body>
     </html>
   );
